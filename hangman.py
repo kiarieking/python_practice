@@ -9,8 +9,8 @@ dash="_"
 entry = dash*len(fruit)
 
 count = 0
-chances = 7
-
+chances = len(fruit)+3
+print(f"you have {chances} chances")
 greeting = "Welcome to hangman game!!"
 
 print (greeting)
@@ -22,11 +22,19 @@ while count < chances :
     if char_guess in fruit:
         i = fruit.index(char_guess)
         # print(i)
-        entry = entry[:i] + char_guess + entry[i+1:]
+        entry = ''.join([char_guess if fruit[i] == char_guess else entry[i] for i in range(len(fruit))])
+
+        if entry == fruit:
+            print(f"Congrats!! The fruit is {entry}.")
+            break
         print(entry)
+        
     elif char_guess not in fruit:
         print("That character does not exist")
         print (entry)
+
+    count +=1
+    print(f"count is {count}")
 
 
 
