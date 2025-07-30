@@ -5,7 +5,7 @@ turn_choice = input("Do you want to start first or second? Enter F for FIRST and
 
 if turn_choice == "f" :
     user_choice = input("Enter your number : ")
-    if user_choice < 21 and user_choice > 0:
+    if int(user_choice) < 21 and int(user_choice) > 0:
         x.append(user_choice)
     else :
         print("Invalid choice")
