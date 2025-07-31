@@ -8,7 +8,7 @@ def user_input():
     selections = input("How many numbers do you want to input: ")
     last_entry = 0
     if len(x) != 0: 
-        last_entry = x[int(selections)-1]
+        last_entry = x[len(x)-1]
     while default_selections <= int(selections):
         user_choice = input("Enter your number : ")
         if int(user_choice) < 21 and int(user_choice) > 0 and int(user_choice) > int(last_entry):
@@ -17,16 +17,27 @@ def user_input():
             print("Invalid choice")
         default_selections +=1
     print(x)
+    winning_value = x[len(x)-1]
+    if winning_value == 21:
+        print("Sorry!! You lost!!")
+        return
     computer_input()
 
 def computer_input():
     default_selections = 1
     selections = random.randint(1,6)
-    while default_selections <= selections:
-        computer_choice = random.randint(0,21)
+    last_entry = 0
+   
+    last_entry = x[len(x)-1]
+    while default_selections <= selections :
+        computer_choice = random.randint(int(last_entry)+1,21)
         x.append(computer_choice)
         default_selections +=1
     print(x)
+    winning_value = x[len(x)-1]
+    if winning_value == 21:
+        print("Congratulations!! You win!!")
+        return
     user_input()
 
 y = 21
