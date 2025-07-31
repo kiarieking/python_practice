@@ -3,15 +3,35 @@ import random
 x =[]
 turn_choice = input("Do you want to start first or second? Enter F for FIRST and S for SECOND : ")
 
-if turn_choice == "f" :
-    user_choice = input("Enter your number : ")
-    if int(user_choice) < 21 and int(user_choice) > 0:
-        x.append(user_choice)
-    else :
-        print("Invalid choice")
+def user_input():
+    default_selections = 1
+    selections = input("How many numbers do you want to input: ")
+    last_entry = 0
+    if len(x) != 0: 
+        last_entry = x[int(selections)-1]
+    while default_selections <= int(selections):
+        user_choice = input("Enter your number : ")
+        if int(user_choice) < 21 and int(user_choice) > 0 and int(user_choice) > int(last_entry):
+            x.append(user_choice)
+        else :
+            print("Invalid choice")
+        default_selections +=1
+    print(x)
+    computer_input()
 
-elif turn_choice == "s" :
-    computer_choice = random.randint(0,22)
-    x.append(computer_choice)
+def computer_input():
+    default_selections = 1
+    selections = random.randint(1,6)
+    while default_selections <= selections:
+        computer_choice = random.randint(0,21)
+        x.append(computer_choice)
+        default_selections +=1
+    print(x)
+    user_input()
 
-print(x)
+y = 21
+while y not in x:
+    if turn_choice == "f":
+        user_input()
+    elif turn_choice == "s":
+        computer_input()
