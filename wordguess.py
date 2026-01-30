@@ -15,7 +15,7 @@ while count <= chances:
     if word != guess:
         print("Incorrect! Try again")
         if count == chances:
-            print ("Last chance")
+            print ("Last chance") 
     elif word == guess:
         print(f"Great job {name}!")
         break

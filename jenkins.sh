@@ -10,4 +10,20 @@ python3 -m venv venv
 
 . venv/bin/activate
 
-pip install -r odoo_sandbox/requirements.txt
+
+case "$BRANCH_NAME" in 
+    Main)
+    TEST_DIR = "odoo_selenium_tests_Main"
+    ;;
+
+    Work-pc)
+    TEST_DIR = "odoo_selenium_tests_Work-pc"
+    ;;
+
+    Home-pc/*)
+    TEST_DIR = "odoo_selenium_tests_Home-pc"
+    exit 1
+    ;;
+esac
+
+pip install -r "$TEST_DIR/requirements.txt"
